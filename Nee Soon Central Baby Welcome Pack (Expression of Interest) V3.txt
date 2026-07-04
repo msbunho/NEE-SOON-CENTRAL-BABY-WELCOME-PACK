@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuddle Club @ Nee Soon Central — Expression of Interest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F7FB;
+    --bg-alt:#EFF1FA;
+    --ink:#33344A;
+    --ink-soft:#7A7C99;
+    --coral:#F1A6C4;
+    --coral-dark:#DE84AC;
+    --butter:#AECBEE;
+    --card:#FFFFFF;
+    --line:#E7E7F2;
+    --danger:#E38DA0;
+    --pending:#C7C9DE;
+    --verified:#93BCE8;
+    --approved:#6FA3D6;
+    --waitlist:#EFAECB;
+    --collected:#33344A;
+    --icon-blue:#7DA9DD;
+    --icon-pink:#DE84AC;
+    --grad-blue:#6C8EEF;
+    --grad-purple:#B07FE0;
+    --grad-pink:#EA6FA6;
+    --gold:#E0A63C;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px;}
+  button{font-family:inherit;cursor:pointer;}
+  :focus-visible{outline:3px solid var(--coral-dark);outline-offset:2px;}
+
+  .icon{display:inline-flex;align-items:center;justify-content:center;flex:none;vertical-align:middle;}
+  .icon svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block;}
+  .icon-pink{color:var(--icon-pink);}
+  .icon-blue{color:var(--icon-blue);}
+  .icon-white{color:#fff;}
+  .badge .icon{font-size:15px;margin-right:2px;}
+  .step h3 .icon{font-size:15px;margin-right:6px;color:var(--icon-blue);}
+  .step:nth-child(odd) h3 .icon{color:var(--icon-pink);}
+  .form-section h2 .icon{font-size:18px;margin-right:1px;}
+  .stat .icon{font-size:17px;margin-bottom:6px;}
+
+  /* ---------- Top nav ---------- */
+  .topnav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(248,247,251,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--coral);flex:none;}
+  .nav-toggle{
+    display:flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;
+  }
+  .nav-toggle button{
+    border:none;background:transparent;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink-soft);
+  }
+  .nav-toggle button.active{background:var(--ink);color:#fff;}
+
+  section{display:none;}
+  section.active{display:block;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:44px 0 28px;}
+  .badge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--card);border:1px solid var(--line);
+    padding:6px 12px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--ink-soft);
+    letter-spacing:.02em;
+  }
+  .hero h1{font-size:clamp(32px,7vw,46px);line-height:1.02;margin:16px 0 10px;letter-spacing:-0.01em;text-transform:uppercase;font-weight:700;}
+  .hero h1 .grad-line{
+    background:linear-gradient(90deg,var(--grad-blue),var(--grad-purple),var(--grad-pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;display:block;
+  }
+  .hero p.lede{color:var(--ink-soft);font-size:16.5px;max-width:56ch;margin:0 0 14px;}
+  .tagline{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;margin:0 0 22px;letter-spacing:.01em;}
+  .tagline span{margin-right:2px;}
+  .tagline .c1{color:var(--grad-blue);} .tagline .c2{color:var(--gold);} .tagline .c3{color:var(--grad-purple);} .tagline .c4{color:var(--grad-pink);}
+
+  .fact-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .fact-pill{
+    display:flex;align-items:center;gap:10px;background:var(--card);
+    border:1.5px solid var(--pill-border,var(--grad-blue));border-radius:14px;padding:10px 16px;
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--pill-border,var(--grad-blue)) 12%, transparent);
+    flex:1;min-width:150px;
+  }
+  .fact-pill .icon{color:var(--pill-border,var(--grad-blue));font-size:19px;}
+  .fact-pill .ft-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);font-weight:600;display:block;}
+  .fact-pill .ft-value{font-size:14.5px;font-weight:700;color:var(--ink);}
+
+  .cta-glow{
+    display:inline-flex;align-items:center;gap:8px;background:var(--card);
+    border:1.5px solid var(--gold);color:var(--gold);font-weight:700;font-size:14.5px;
+    padding:12px 20px;border-radius:12px;margin-bottom:30px;text-decoration:none;
+    box-shadow:0 0 0 4px color-mix(in srgb, var(--gold) 14%, transparent);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .cta-glow:hover{transform:translateY(-1px);box-shadow:0 0 0 6px color-mix(in srgb, var(--gold) 20%, transparent);}
+
+  /* signature: eligibility timeline */
+  .timeline-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 20px 16px;margin-bottom:24px;
+    box-shadow:0 1px 2px rgba(51,52,74,0.03), 0 12px 28px rgba(160,170,220,0.14);
+  }
+  .timeline-card .tl-label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);font-weight:600;margin-bottom:14px;}
+  .tl-track{position:relative;height:8px;border-radius:999px;background:var(--bg-alt);margin:0 4px 10px;}
+  .tl-fill{position:absolute;left:0;top:0;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--butter),var(--coral));width:100%;}
+  .tl-dot{
+    position:absolute;top:50%;width:20px;height:20px;border-radius:50%;
+    background:var(--card);border:4px solid var(--coral);transform:translate(-50%,-50%);
+    transition:left .3s ease;
+  }
+  .tl-marks{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-soft);padding:0 4px;}
+  .tl-status{margin-top:12px;font-size:14px;font-weight:600;}
+  .tl-status.eligible{color:var(--approved);}
+  .tl-status.ineligible{color:var(--danger);}
+  .tl-status.neutral{color:var(--ink-soft);font-weight:500;}
+
+  /* ---------- Disclaimer ---------- */
+  details.disclaimer{
+    background:var(--bg-alt);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 18px;margin-bottom:30px;
+  }
+  details.disclaimer summary{font-weight:600;cursor:pointer;font-size:15px;list-style:none;display:flex;align-items:center;justify-content:space-between;}
+  details.disclaimer summary::-webkit-details-marker{display:none;}
+  details.disclaimer summary::after{content:'+';font-size:20px;color:var(--ink-soft);}
+  details.disclaimer[open] summary::after{content:'–';}
+  details.disclaimer p{color:var(--ink-soft);font-size:14.5px;margin:12px 0 0;}
+  details.disclaimer strong{color:var(--ink);}
+
+  /* ---------- Journey ---------- */
+  .journey{margin-bottom:36px;}
+  .journey h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin-bottom:16px;}
+  .steps{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line);margin-left:14px;}
+  .step{position:relative;padding:0 0 22px 26px;}
+  .step:last-child{padding-bottom:0;}
+  .step::before{
+    content:attr(data-n);position:absolute;left:-15px;top:-2px;
+    width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step h3{font-size:15px;margin:0 0 3px;}
+  .step p{font-size:14px;color:var(--ink-soft);margin:0;}
+
+  /* ---------- Form ---------- */
+  .form-section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;margin-bottom:20px;box-shadow:0 1px 2px rgba(51,52,74,0.03), 0 10px 24px rgba(160,170,220,0.10);}
+  .form-section h2{font-size:17px;display:flex;align-items:center;gap:9px;margin:0 0 4px;}
+  .form-section h2 .num{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;background:var(--bg-alt);color:var(--ink-soft);
+    padding:2px 8px;border-radius:6px;
+  }
+  .form-section .hint{color:var(--ink-soft);font-size:13.5px;margin:0 0 18px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{margin-bottom:14px;}
+  .field.full{grid-column:1/-1;}
+  .field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px;}
+  .field .optional{font-weight:400;color:var(--ink-soft);}
+  .field input[type=text],.field input[type=tel],.field input[type=email],.field input[type=date],.field input[type=number],.field select{
+    width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:9px;font-size:14.5px;font-family:inherit;
+    background:#fff;color:var(--ink);
+  }
+  .field input:focus,.field select:focus{border-color:var(--coral);}
+  .radio-group{display:flex;gap:10px;}
+  .radio-group label{
+    display:flex;align-items:center;gap:6px;font-weight:500;font-size:14px;
+    border:1.5px solid var(--line);padding:9px 14px;border-radius:9px;cursor:pointer;flex:1;justify-content:center;
+  }
+  .radio-group input{accent-color:var(--coral);}
+  .radio-group label:has(input:checked){border-color:var(--coral);background:#FCF1F6;}
+  .consent{display:flex;gap:10px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line);}
+  .consent:first-of-type{border-top:none;}
+  .consent input{margin-top:3px;accent-color:var(--coral);flex:none;}
+  .consent p{margin:0;font-size:14px;color:var(--ink-soft);}
+  .doc-note{background:var(--bg-alt);border-radius:9px;padding:12px 14px;font-size:13.5px;color:var(--ink-soft);margin-top:4px;}
+
+  .submit-bar{display:flex;flex-direction:column;gap:10px;margin-bottom:60px;}
+  .btn-primary{
+    background:var(--ink);color:#fff;border:none;padding:15px 20px;border-radius:11px;
+    font-size:15.5px;font-weight:600;width:100%;transition:background .15s;
+  }
+  .btn-primary:hover{background:#26273a;}
+  .form-error{color:var(--danger);font-size:13.5px;text-align:center;display:none;}
+
+  /* ---------- Acknowledgement ---------- */
+  .ack{display:none;text-align:center;padding:60px 0 80px;}
+  .ack.show{display:block;}
+  .ack .ring{
+    width:64px;height:64px;border-radius:50%;background:var(--approved);color:#fff;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:30px;
+  }
+  .ack h2{font-size:24px;margin:0 0 8px;}
+  .ack p{color:var(--ink-soft);max-width:46ch;margin:0 auto 18px;}
+  .ack .ref{
+    display:inline-block;background:var(--card);border:1.5px dashed var(--coral);border-radius:10px;
+    padding:12px 22px;font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;margin-bottom:20px;
+  }
+  .ack button{background:transparent;border:1.5px solid var(--line);border-radius:9px;padding:10px 18px;font-weight:600;font-size:14px;}
+
+  /* ---------- Staff view ---------- */
+  .gate{max-width:360px;margin:80px auto;text-align:center;}
+  .gate h2{margin-bottom:6px;}
+  .gate p{color:var(--ink-soft);font-size:14px;margin-bottom:18px;}
+  .gate input{width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:9px;font-size:15px;margin-bottom:10px;text-align:center;letter-spacing:.1em;}
+  .gate .warn{font-size:12px;color:var(--ink-soft);margin-top:14px;line-height:1.5;}
+
+  .dash{padding:28px 0 80px;max-width:1080px;}
+  .dash-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:22px;}
+  .dash-head h1{font-size:24px;margin:0;}
+  .dash-head p{margin:2px 0 0;color:var(--ink-soft);font-size:13.5px;}
+  .stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px;box-shadow:0 1px 2px rgba(51,52,74,0.03), 0 8px 20px rgba(160,170,220,0.10);}
+  .stat .n{font-family:'Space Grotesk';font-size:26px;font-weight:700;}
+  .stat .l{font-size:12px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+  .stat.pending .n{color:var(--pending);}
+  .stat.verified .n{color:var(--verified);}
+  .stat.approved .n{color:var(--approved);}
+  .stat.waitlist .n{color:var(--waitlist);}
+  .stat.collected .n{color:var(--collected);}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 6px;margin-bottom:20px;overflow-x:auto;box-shadow:0 1px 2px rgba(51,52,74,0.03), 0 10px 24px rgba(160,170,220,0.10);}
+  .panel h3{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin:0 0 14px;}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+  .filters select,.filters input{
+    padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;font-size:13px;font-family:inherit;background:#fff;
+  }
+  table{border-collapse:collapse;width:100%;font-size:13px;min-width:920px;}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);padding:8px 10px;border-bottom:2px solid var(--line);white-space:nowrap;}
+  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;}
+  .status-pill{
+    display:inline-block;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:600;color:#fff;
+  }
+  .status-pill.Pending{background:var(--pending);}
+  .status-pill.Verified{background:var(--verified);}
+  .status-pill.Approved{background:var(--approved);}
+  .status-pill.Waitlist{background:var(--waitlist);}
+  .status-pill.Collected{background:var(--collected);}
+  select.status-select{border:1.5px solid var(--line);border-radius:7px;padding:5px 6px;font-size:12px;background:#fff;}
+  input.remark-input{border:1.5px solid var(--line);border-radius:7px;padding:5px 7px;font-size:12px;width:130px;}
+  .dup-flag{color:var(--danger);font-weight:700;font-size:11px;}
+  .empty-row td{color:var(--ink-soft);text-align:center;padding:26px;}
+
+  .analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:12.5px;}
+  .bar-row .lbl{width:92px;flex:none;color:var(--ink-soft);}
+  .bar-track{flex:1;background:var(--bg-alt);border-radius:6px;height:16px;position:relative;overflow:hidden;}
+  .bar-fill{height:100%;background:var(--coral);border-radius:6px;}
+  .bar-row .val{width:24px;text-align:right;flex:none;font-weight:600;}
+
+  .toolbar{display:flex;justify-content:flex-end;gap:8px;margin-bottom:14px;}
+  .btn-ghost{background:var(--card);border:1.5px solid var(--line);border-radius:9px;padding:9px 14px;font-size:13px;font-weight:600;}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--ink-soft);font-size:12.5px;text-align:center;}
+
+  /* ---------- Icon animations ---------- */
+  @keyframes wiggle{0%,100%{transform:rotate(0deg);}25%{transform:rotate(-10deg);}75%{transform:rotate(10deg);}}
+  @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+  @keyframes popIn{from{opacity:0;transform:scale(.5);}to{opacity:1;transform:scale(1);}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(241,166,196,0.45);}70%{box-shadow:0 0 0 11px rgba(241,166,196,0);}100%{box-shadow:0 0 0 0 rgba(241,166,196,0);}}
+  @keyframes drawCheck{from{stroke-dashoffset:1;}to{stroke-dashoffset:0;}}
+  @keyframes gentleBob{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-2px) rotate(4deg);}}
+
+  .badge .icon svg{animation:wiggle 2.6s ease-in-out infinite;transform-origin:12px 16px;}
+  .badge:hover .icon svg{animation-duration:.9s;}
+
+  .step{opacity:0;animation:fadeUp .5s ease forwards;}
+  .step:nth-child(1){animation-delay:.05s;}
+  .step:nth-child(2){animation-delay:.15s;}
+  .step:nth-child(3){animation-delay:.25s;}
+  .step:nth-child(4){animation-delay:.35s;}
+  .step:nth-child(5){animation-delay:.45s;}
+  .step h3 .icon{transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+  .step:hover h3 .icon{transform:scale(1.25) rotate(-8deg);}
+
+  .form-section h2 .icon{transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+  .form-section:hover h2 .icon{animation:gentleBob 1.1s ease-in-out infinite;}
+
+  .tl-dot{animation:pulseRing 2.2s ease-in-out infinite;}
+
+  .ring{animation:none;}
+  .ack.show .ring{animation:popIn .45s cubic-bezier(.34,1.56,.64,1);}
+  .ack.show .ring .icon svg path{stroke-dasharray:1;stroke-dashoffset:1;animation:drawCheck .5s ease forwards .2s;}
+
+  .stat{opacity:0;animation:popIn .4s cubic-bezier(.34,1.56,.64,1) forwards;}
+  .stat:nth-child(1){animation-delay:.02s;}
+  .stat:nth-child(2){animation-delay:.08s;}
+  .stat:nth-child(3){animation-delay:.14s;}
+  .stat:nth-child(4){animation-delay:.20s;}
+  .stat:nth-child(5){animation-delay:.26s;}
+  .stat .icon{transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+  .stat:hover .icon{transform:scale(1.2) rotate(-6deg);}
+
+  .nav-toggle button .icon,.brand .dot{transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+  .brand:hover .dot{transform:scale(1.4);}
+
+  @media(prefers-reduced-motion:reduce){
+    .badge .icon svg,.tl-dot,.form-section:hover h2 .icon,.step,.stat,.ring,.ack.show .ring,.ack.show .ring .icon svg path{
+      animation:none !important;opacity:1 !important;transform:none !important;
+    }
+  }
+
+  @media(max-width:640px){
+    .fact-pills{flex-direction:column;}
+    .fact-pill{min-width:0;}
+    .field-row{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .analytics-grid{grid-template-columns:1fr;}
+    .nav-toggle button{padding:7px 10px;font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> Nee Soon Central CC</div>
+    <div class="nav-toggle">
+      <button id="navApply" class="active">Apply</button>
+      <button id="navStaff">Staff</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PUBLIC VIEW ============ -->
+<section id="view-apply" class="active">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge"><span class="icon icon-pink"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><rect x="4" y="7" width="16" height="4" rx="1"/><line x1="12" y1="7" x2="12" y2="20"/><path d="M12 7c-1.5-3-5-3-5 0"/><path d="M12 7c1.5-3 5-3 5 0"/></svg></span> Expression of Interest · 2026</span>
+      <h1>Cuddle Club<span class="grad-line">@ Nee Soon Central</span></h1>
+      <p class="lede">For expecting parents and families with babies aged 0–6 months, living in the Nee Soon Central estate. Registering here is an expression of interest, not a confirmed entitlement.</p>
+      <p class="tagline"><span class="c1">Apply.</span><span class="c2">Get Verified.</span><span class="c3">Collect.</span><span class="c4">Welcome Baby.</span></p>
+
+      <div class="fact-pills">
+        <div class="fact-pill" style="--pill-border:var(--grad-blue)">
+          <span class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><rect x="4" y="7" width="16" height="4" rx="1"/><line x1="12" y1="7" x2="12" y2="20"/><path d="M12 7c-1.5-3-5-3-5 0"/><path d="M12 7c1.5-3 5-3 5 0"/></svg></span>
+          <span><span class="ft-label">Programme</span><span class="ft-value">Cuddle Club</span></span>
+        </div>
+        <div class="fact-pill" style="--pill-border:var(--gold)">
+          <span class="icon"><svg viewBox="0 0 24 24"><path d="M20.4 12L12 20.4a2 2 0 0 1-2.8 0l-6.6-6.6a2 2 0 0 1-.6-1.4V5a2 2 0 0 1 2-2h7a2 2 0 0 1 1.4.6l6.6 6.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.3"/></svg></span>
+          <span><span class="ft-label">Est. value</span><span class="ft-value">~$200</span></span>
+        </div>
+        <div class="fact-pill" style="--pill-border:var(--grad-pink)">
+          <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.2 7-12a7 7 0 0 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg></span>
+          <span><span class="ft-label">Area</span><span class="ft-value">Nee Soon Central</span></span>
+        </div>
+      </div>
+
+      <a href="#eoiForm" class="cta-glow">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg>
+        Start your application
+      </a>
+
+      <div class="timeline-card">
+        <div class="tl-label">Eligibility window · updates as you fill the form below</div>
+        <div class="tl-track">
+          <div class="tl-fill"></div>
+          <div class="tl-dot" id="tlDot" style="left:50%"></div>
+        </div>
+        <div class="tl-marks"><span>Expecting</span><span>Born</span><span>6 mo old</span></div>
+        <div class="tl-status neutral" id="tlStatus">Enter a due date or date of birth below to check your eligibility window.</div>
+      </div>
+
+      <details class="disclaimer">
+        <summary>What this Expression of Interest does — and doesn't — mean</summary>
+        <p><strong>This is an Expression of Interest only</strong> and does not constitute confirmation of eligibility or entitlement to receive a Cuddle Club welcome pack (estimated value ~$200). Applications are subject to eligibility checks, programme criteria, available funding, and limited quantities. Only successful applicants will be contacted with collection details.</p>
+      </details>
+
+      <div class="journey">
+        <h2>How it works</h2>
+        <div class="steps">
+          <div class="step" data-n="1"><h3><span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="2.4" height="2.4" rx="0.5"/><rect x="18.6" y="15" width="2.4" height="2.4" rx="0.5"/><rect x="15" y="18.6" width="2.4" height="2.4" rx="0.5"/><rect x="18.6" y="18.6" width="2.4" height="2.4" rx="0.5"/></svg></span>Scan the QR code</h3><p>You're already here — nice.</p></div>
+          <div class="step" data-n="2"><h3><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></span>Complete this form</h3><p>Takes about 3 minutes.</p></div>
+          <div class="step" data-n="3"><h3><span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6l9 7 9-7"/><circle cx="18" cy="17" r="4.2" fill="var(--card)"/><path d="M16.4 17l1.1 1.1 2-2.1"/></svg></span>Get an acknowledgement</h3><p>You'll receive a reference number instantly.</p></div>
+          <div class="step" data-n="4"><h3><span class="icon"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><line x1="15" y1="15" x2="20" y2="20"/></svg></span>We review eligibility</h3><p>Our staff check your details against programme criteria.</p></div>
+          <div class="step" data-n="5"><h3><span class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1.5"/><rect x="4" y="7" width="16" height="4" rx="1"/><line x1="12" y1="7" x2="12" y2="20"/><path d="M12 7c-1.5-3-5-3-5 0"/><path d="M12 7c1.5-3 5-3 5 0"/></svg></span>Successful applicants are notified</h3><p>With collection date, time, and venue.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <form id="eoiForm" novalidate>
+      <div class="form-section">
+        <h2><span class="icon icon-blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/></svg></span><span class="num">01</span> Parent details</h2>
+        <p class="hint">The person collecting the pack, if approved.</p>
+        <div class="field full">
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" required autocomplete="name">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="nric">NRIC</label>
+            <input type="text" id="nric" placeholder="e.g. S1234567A" required maxlength="9">
+          </div>
+          <div class="field">
+            <label for="mobile">Mobile number</label>
+            <input type="tel" id="mobile" required autocomplete="tel">
+          </div>
+        </div>
+        <div class="field full">
+          <label for="email">Email</label>
+          <input type="email" id="email" required autocomplete="email">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2><span class="icon icon-pink"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/><rect x="10" y="14" width="4" height="5"/></svg></span><span class="num">02</span> Residential details</h2>
+        <div class="field full">
+          <label for="address">Residential address</label>
+          <input type="text" id="address" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="postal">Postal code</label>
+            <input type="text" id="postal" required maxlength="6" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="block">Block (Nee Soon Central)</label>
+            <input type="text" id="block" placeholder="e.g. Blk 115">
+          </div>
+        </div>
+        <div class="doc-note">Proof of address isn't collected online in this prototype — successful applicants can bring it along at collection.</div>
+      </div>
+
+      <div class="form-section">
+        <h2><span class="icon icon-blue"><svg viewBox="0 0 24 24"><rect x="9" y="3.5" width="6" height="3" rx="1"/><path d="M9 6.5h6l1.2 3v9.5a2 2 0 0 1-2 2h-4.4a2 2 0 0 1-2-2V9.5l1.2-3z"/><line x1="7.6" y1="12.5" x2="16.4" y2="12.5"/></svg></span><span class="num">03</span> Baby information</h2>
+        <div class="field-row">
+          <div class="field">
+            <label for="edd">Expected due date <span class="optional">(if expecting)</span></label>
+            <input type="date" id="edd">
+          </div>
+          <div class="field">
+            <label for="babyDob">Baby's date of birth <span class="optional">(if already born)</span></label>
+            <input type="date" id="babyDob">
+          </div>
+        </div>
+        <div class="field full">
+          <label for="babyName">Baby's name <span class="optional">(if born)</span></label>
+          <input type="text" id="babyName">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="numChildren">Number of children (including this one)</label>
+            <input type="number" id="numChildren" min="1" value="1">
+          </div>
+          <div class="field">
+            <label>First-time parent?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="firstTime" value="Yes" checked> Yes</label>
+              <label><input type="radio" name="firstTime" value="No"> No</label>
+            </div>
+          </div>
+        </div>
+        <div class="doc-note">Please bring your pregnancy appointment card, or your child's birth certificate / health booklet, to verification or collection.</div>
+      </div>
+
+      <div class="form-section">
+        <h2><span class="icon icon-pink"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="num">04</span> Consent</h2>
+        <div class="consent">
+          <input type="checkbox" id="consentEOI" required>
+          <p>I understand this is an Expression of Interest only, and submission does not guarantee that I will receive a Cuddle Club welcome pack.</p>
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="consentData" required>
+          <p>I consent to the collection of my personal data for programme administration by Nee Soon Central Community Club.</p>
+        </div>
+      </div>
+
+      <div class="submit-bar">
+        <p class="form-error" id="formError">Please fill in all required fields and both consent boxes.</p>
+        <button type="submit" class="btn-primary">Submit Expression of Interest</button>
+      </div>
+    </form>
+
+    <div class="ack" id="ackScreen">
+      <div class="ring"><span class="icon icon-white" style="font-size:26px;"><svg viewBox="0 0 24 24" stroke-width="2.4"><path pathLength="1" d="M5 13l4 4L19 7"/></svg></span></div>
+      <h2>We've received your submission</h2>
+      <p>Thank you for your interest in Cuddle Club @ Nee Soon Central. Our team will review your eligibility and contact successful applicants with collection details.</p>
+      <div class="ref mono" id="ackRef">NSC-EOI-000000</div>
+      <div><button id="ackNew">Submit another response</button></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ STAFF GATE ============ -->
+<section id="view-gate">
+  <div class="wrap">
+    <div class="gate">
+      <h2>Staff dashboard</h2>
+      <p>Enter the staff passcode to continue.</p>
+      <input type="password" id="passcodeInput" placeholder="Passcode" class="mono">
+      <button class="btn-primary" id="passcodeSubmit">Enter</button>
+      <p class="form-error" id="gateError">Incorrect passcode.</p>
+      <p class="warn">Prototype note: this passcode is a light front-door only, not real access control. For a live rollout with full NRIC data, put this behind a properly authenticated backend.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAFF DASHBOARD ============ -->
+<section id="view-dash">
+  <div class="wrap dash">
+    <div class="dash-head">
+      <div>
+        <h1>Registrations</h1>
+        <p>Cuddle Club @ Nee Soon Central · Expression of Interest</p>
+      </div>
+      <button class="btn-ghost" id="lockOut">Lock dashboard</button>
+    </div>
+
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="panel">
+      <h3>All applications</h3>
+      <div class="filters">
+        <select id="fStatus">
+          <option value="">All statuses</option>
+          <option>Pending</option><option>Verified</option><option>Approved</option><option>Waitlist</option><option>Collected</option>
+        </select>
+        <select id="fEligible">
+          <option value="">Eligibility: all</option>
+          <option value="yes">Eligible</option>
+          <option value="no">Not eligible</option>
+        </select>
+        <select id="fFirstTime">
+          <option value="">First-time: all</option>
+          <option value="Yes">First-time</option>
+          <option value="No">Experienced</option>
+        </select>
+        <input type="text" id="fBlock" placeholder="Filter by block">
+        <input type="text" id="fSearch" placeholder="Search name / NRIC / phone">
+      </div>
+      <div class="toolbar">
+        <button class="btn-ghost" id="exportCsv">Export to Excel (CSV)</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Ref</th><th>Name</th><th>NRIC</th><th>Mobile</th><th>Block</th>
+            <th>EDD / DOB</th><th>Eligible</th><th>1st time</th><th>Dup?</th>
+            <th>Status</th><th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h3>Analytics</h3>
+      <div class="analytics-grid">
+        <div>
+          <p class="hint" style="font-size:12.5px;color:var(--ink-soft);margin:0 0 10px;">Applications by week</p>
+          <div id="chartByWeek"></div>
+        </div>
+        <div>
+          <p class="hint" style="font-size:12.5px;color:var(--ink-soft);margin:0 0 10px;">Distribution by block</p>
+          <div id="chartByBlock"></div>
+        </div>
+        <div>
+          <p class="hint" style="font-size:12.5px;color:var(--ink-soft);margin:0 0 10px;">Expected delivery months</p>
+          <div id="chartByMonth"></div>
+        </div>
+        <div>
+          <p class="hint" style="font-size:12.5px;color:var(--ink-soft);margin:0 0 10px;">First-time vs experienced parents</p>
+          <div id="chartFirstTime"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Nee Soon Central Community Club · Prototype build — not a live government service.</footer>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'submissions';
+  const PASSCODE = 'neesoon2026';
+
+  // ---------- Navigation ----------
+  const views = {
+    apply: document.getElementById('view-apply'),
+    gate: document.getElementById('view-gate'),
+    dash: document.getElementById('view-dash')
+  };
+  function showView(name){
+    Object.values(views).forEach(v=>v.classList.remove('active'));
+    views[name].classList.add('active');
+    document.getElementById('navApply').classList.toggle('active', name==='apply');
+    document.getElementById('navStaff').classList.toggle('active', name!=='apply');
+  }
+  document.getElementById('navApply').onclick = ()=>showView('apply');
+  document.getElementById('navStaff').onclick = ()=>{
+    showView(sessionStorage.getItem('staffAuthed') ? 'dash' : 'gate');
+    if(sessionStorage.getItem('staffAuthed')) renderDashboard();
+  };
+  document.getElementById('passcodeSubmit').onclick = ()=>{
+    const val = document.getElementById('passcodeInput').value;
+    if(val === PASSCODE){
+      sessionStorage.setItem('staffAuthed','1');
+      document.getElementById('gateError').style.display='none';
+      showView('dash');
+      renderDashboard();
+    } else {
+      document.getElementById('gateError').style.display='block';
+    }
+  };
+  document.getElementById('lockOut').onclick = ()=>{
+    sessionStorage.removeItem('staffAuthed');
+    showView('apply');
+  };
+
+  // ---------- Storage helpers ----------
+  async function loadSubmissions(){
+    try{
+      const res = await window.storage.get(STORAGE_KEY, true);
+      return res ? JSON.parse(res.value) : [];
+    }catch(e){
+      return [];
+    }
+  }
+  async function saveSubmissions(list){
+    try{
+      await window.storage.set(STORAGE_KEY, JSON.stringify(list), true);
+      return true;
+    }catch(e){
+      console.error('Storage error', e);
+      return false;
+    }
+  }
+
+  // ---------- Eligibility logic ----------
+  function monthsBetween(a,b){
+    return (b.getFullYear()-a.getFullYear())*12 + (b.getMonth()-a.getMonth()) + (b.getDate()-a.getDate())/30;
+  }
+  function computeEligibility(edd, babyDob){
+    const today = new Date();
+    if(babyDob){
+      const dob = new Date(babyDob);
+      const ageMonths = monthsBetween(dob, today);
+      return { eligible: ageMonths >= 0 && ageMonths <= 6, basis: 'baby age', value: Math.max(0,Math.round(ageMonths)) };
+    }
+    if(edd){
+      const due = new Date(edd);
+      const monthsToDue = monthsBetween(today, due);
+      return { eligible: monthsToDue >= 0 && monthsToDue <= 6, basis: 'EDD', value: Math.max(0,Math.round(monthsToDue)) };
+    }
+    return { eligible: null, basis: null, value: null };
+  }
+
+  // ---------- Live timeline widget ----------
+  const eddInput = document.getElementById('edd');
+  const dobInput = document.getElementById('babyDob');
+  const tlDot = document.getElementById('tlDot');
+  const tlStatus = document.getElementById('tlStatus');
+  function updateTimeline(){
+    const edd = eddInput.value, dob = dobInput.value;
+    const result = computeEligibility(edd, dob);
+    if(result.eligible === null){
+      tlDot.style.left = '50%';
+      tlStatus.className = 'tl-status neutral';
+      tlStatus.textContent = 'Enter a due date or date of birth below to check your eligibility window.';
+      return;
+    }
+    let pct;
+    if(result.basis === 'baby age'){
+      pct = 50 + Math.min(result.value,6)/6*50;
+      tlStatus.textContent = result.eligible
+        ? `Baby is about ${result.value} month(s) old — within the 0–6 month window.`
+        : `Baby is about ${result.value} month(s) old — outside the 0–6 month window.`;
+    } else {
+      pct = 50 - Math.min(result.value,6)/6*50;
+      tlStatus.textContent = result.eligible
+        ? `About ${result.value} month(s) to your due date — within the eligible window.`
+        : `Your due date is more than 6 months away, or has passed — outside the window.`;
+    }
+    tlDot.style.left = pct + '%';
+    tlStatus.className = 'tl-status ' + (result.eligible ? 'eligible' : 'ineligible');
+  }
+  eddInput.addEventListener('input', updateTimeline);
+  dobInput.addEventListener('input', updateTimeline);
+
+  // ---------- Form submit ----------
+  const form = document.getElementById('eoiForm');
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const fullName = document.getElementById('fullName').value.trim();
+    const nric = document.getElementById('nric').value.trim().toUpperCase();
+    const mobile = document.getElementById('mobile').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const postal = document.getElementById('postal').value.trim();
+    const block = document.getElementById('block').value.trim();
+    const edd = eddInput.value;
+    const babyDob = dobInput.value;
+    const babyName = document.getElementById('babyName').value.trim();
+    const numChildren = document.getElementById('numChildren').value;
+    const firstTime = document.querySelector('input[name=firstTime]:checked').value;
+    const consentEOI = document.getElementById('consentEOI').checked;
+    const consentData = document.getElementById('consentData').checked;
+
+    const requiredOk = fullName && nric && mobile && email && address && postal && consentEOI && consentData;
+    if(!requiredOk){
+      document.getElementById('formError').style.display='block';
+      return;
+    }
+    document.getElementById('formError').style.display='none';
+
+    const elig = computeEligibility(edd, babyDob);
+    const submissions = await loadSubmissions();
+
+    // duplicate detection: NRIC suffix, phone, or address
+    const nricSuffix = nric.slice(-4);
+    const isDup = submissions.some(s =>
+      (s.nric && s.nric.slice(-4) === nricSuffix) ||
+      (s.mobile && s.mobile === mobile) ||
+      (s.postal && s.postal === postal && s.address && s.address.toLowerCase() === address.toLowerCase())
+    );
+
+    const id = 'NSC-EOI-' + Date.now().toString().slice(-6);
+    const record = {
+      id, timestamp: new Date().toISOString(),
+      fullName, nric, mobile, email,
+      address, postal, block,
+      edd, babyDob, babyName, numChildren, firstTime,
+      eligible: elig.eligible, eligibleBasis: elig.basis,
+      duplicate: isDup,
+      status: 'Pending', remarks: ''
+    };
+    submissions.push(record);
+    await saveSubmissions(submissions);
+
+    document.getElementById('ackRef').textContent = id;
+    form.style.display = 'none';
+    document.getElementById('ackScreen').classList.add('show');
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  document.getElementById('ackNew').onclick = ()=>{
+    form.reset();
+    updateTimeline();
+    form.style.display = 'block';
+    document.getElementById('ackScreen').classList.remove('show');
+  };
+
+  // ---------- Dashboard ----------
+  let allSubmissions = [];
+
+  async function renderDashboard(){
+    allSubmissions = await loadSubmissions();
+    renderStats();
+    renderTable();
+    renderAnalytics();
+  }
+
+  function renderStats(){
+    const counts = { Pending:0, Verified:0, Approved:0, Waitlist:0, Collected:0 };
+    allSubmissions.forEach(s => { if(counts[s.status] !== undefined) counts[s.status]++; });
+    const total = allSubmissions.length;
+    const grid = document.getElementById('statGrid');
+    grid.innerHTML = `
+      <div class="stat"><span class="icon icon-blue"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="2"/><rect x="9" y="2" width="6" height="3" rx="1"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg></span><div class="n">${total}</div><div class="l">Total</div></div>
+      <div class="stat pending"><span class="icon" style="color:var(--pending)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><div class="n">${counts.Pending}</div><div class="l">Pending</div></div>
+      <div class="stat verified"><span class="icon" style="color:var(--verified)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9 12l2 2 4-4"/></svg></span><div class="n">${counts.Verified}</div><div class="l">Verified</div></div>
+      <div class="stat approved"><span class="icon" style="color:var(--approved)"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg></span><div class="n">${counts.Approved}</div><div class="l">Approved</div></div>
+      <div class="stat waitlist"><span class="icon" style="color:var(--waitlist)"><svg viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/></svg></span><div class="n">${counts.Waitlist}</div><div class="l">Waitlist</div></div>
+    `;
+  }
+
+  function applyFilters(list){
+    const status = document.getElementById('fStatus').value;
+    const eligible = document.getElementById('fEligible').value;
+    const firstTime = document.getElementById('fFirstTime').value;
+    const block = document.getElementById('fBlock').value.trim().toLowerCase();
+    const search = document.getElementById('fSearch').value.trim().toLowerCase();
+    return list.filter(s=>{
+      if(status && s.status !== status) return false;
+      if(eligible === 'yes' && !s.eligible) return false;
+      if(eligible === 'no' && s.eligible) return false;
+      if(firstTime && s.firstTime !== firstTime) return false;
+      if(block && !(s.block||'').toLowerCase().includes(block)) return false;
+      if(search){
+        const hay = (s.fullName+' '+s.nric+' '+s.mobile).toLowerCase();
+        if(!hay.includes(search)) return false;
+      }
+      return true;
+    });
+  }
+
+  function renderTable(){
+    const list = applyFilters(allSubmissions).sort((a,b)=> new Date(b.timestamp)-new Date(a.timestamp));
+    const tbody = document.getElementById('tableBody');
+    if(list.length === 0){
+      tbody.innerHTML = `<tr class="empty-row"><td colspan="11">No applications match these filters yet.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = list.map(s=>{
+      const edb = s.babyDob ? ('DOB ' + s.babyDob) : (s.edd ? ('EDD ' + s.edd) : '—');
+      const statuses = ['Pending','Verified','Approved','Waitlist','Collected'];
+      const options = statuses.map(st=>`<option value="${st}" ${s.status===st?'selected':''}>${st}</option>`).join('');
+      return `<tr data-id="${s.id}">
+        <td class="mono">${s.id}</td>
+        <td>${escapeHtml(s.fullName)}</td>
+        <td class="mono">${escapeHtml(s.nric)}</td>
+        <td class="mono">${escapeHtml(s.mobile)}</td>
+        <td>${escapeHtml(s.block||'—')}</td>
+        <td>${edb}</td>
+        <td>${s.eligible===null ? '—' : (s.eligible ? '✅' : '❌')}</td>
+        <td>${s.firstTime}</td>
+        <td>${s.duplicate ? '<span class="dup-flag">POSSIBLE</span>' : '—'}</td>
+        <td><select class="status-select">${options}</select></td>
+        <td><input class="remark-input" type="text" placeholder="Add remark" value="${escapeHtml(s.remarks||'')}"></td>
+      </tr>`;
+    }).join('');
+
+    tbody.querySelectorAll('tr').forEach(tr=>{
+      const id = tr.getAttribute('data-id');
+      tr.querySelector('.status-select').addEventListener('change', async (e)=>{
+        const rec = allSubmissions.find(s=>s.id===id);
+        rec.status = e.target.value;
+        await saveSubmissions(allSubmissions);
+        renderStats();
+      });
+      tr.querySelector('.remark-input').addEventListener('change', async (e)=>{
+        const rec = allSubmissions.find(s=>s.id===id);
+        rec.remarks = e.target.value;
+        await saveSubmissions(allSubmissions);
+      });
+    });
+  }
+
+  function escapeHtml(str){
+    return (str||'').toString().replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  ['fStatus','fEligible','fFirstTime','fBlock','fSearch'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', renderTable);
+  });
+
+  function renderBarChart(containerId, dataObj, maxOverride){
+    const container = document.getElementById(containerId);
+    const entries = Object.entries(dataObj);
+    if(entries.length === 0){ container.innerHTML = '<p style="font-size:12.5px;color:var(--ink-soft);">No data yet.</p>'; return; }
+    const max = maxOverride || Math.max(...entries.map(e=>e[1]), 1);
+    container.innerHTML = entries.map(([label,val])=>`
+      <div class="bar-row">
+        <div class="lbl">${escapeHtml(label)}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(val/max*100)}%"></div></div>
+        <div class="val">${val}</div>
+      </div>
+    `).join('');
+  }
+
+  function isoWeek(dateStr){
+    const d = new Date(dateStr);
+    const onejan = new Date(d.getFullYear(),0,1);
+    const week = Math.ceil((((d - onejan) / 86400000) + onejan.getDay()+1)/7);
+    return `${d.getFullYear()}-W${week}`;
+  }
+  function monthLabel(dateStr){
+    const d = new Date(dateStr);
+    return d.toLocaleString('en-SG',{month:'short', year:'2-digit'});
+  }
+
+  function renderAnalytics(){
+    const byWeek = {};
+    allSubmissions.forEach(s=>{
+      const wk = isoWeek(s.timestamp);
+      byWeek[wk] = (byWeek[wk]||0)+1;
+    });
+    renderBarChart('chartByWeek', byWeek);
+
+    const byBlock = {};
+    allSubmissions.forEach(s=>{
+      const b = s.block || 'Unspecified';
+      byBlock[b] = (byBlock[b]||0)+1;
+    });
+    renderBarChart('chartByBlock', byBlock);
+
+    const byMonth = {};
+    allSubmissions.forEach(s=>{
+      if(s.edd){
+        const m = monthLabel(s.edd);
+        byMonth[m] = (byMonth[m]||0)+1;
+      }
+    });
+    renderBarChart('chartByMonth', byMonth);
+
+    const firstTimeCounts = { 'First-time':0, 'Experienced':0 };
+    allSubmissions.forEach(s=>{
+      if(s.firstTime === 'Yes') firstTimeCounts['First-time']++;
+      else firstTimeCounts['Experienced']++;
+    });
+    renderBarChart('chartFirstTime', firstTimeCounts);
+  }
+
+  document.getElementById('exportCsv').addEventListener('click', ()=>{
+    const list = applyFilters(allSubmissions);
+    const headers = ['id','timestamp','fullName','nric','mobile','email','address','postal','block','edd','babyDob','babyName','numChildren','firstTime','eligible','duplicate','status','remarks'];
+    const rows = list.map(s => headers.map(h => `"${(s[h]===undefined||s[h]===null?'':s[h]).toString().replace(/"/g,'""')}"`).join(','));
+    const csv = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csv], {type:'text/csv'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'cuddle-club-nsc-eoi.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // init
+  updateTimeline();
+})();
+</script>
+</body>
+</html>
